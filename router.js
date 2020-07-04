@@ -25,62 +25,62 @@ router.route('/communities/:id/comments/:commentId')
 
   
 // RegionNorth
-router.route('/culture-books')
+router.route('/regions-north')
   .get(cultureBFunc.index)
 
-router.route('/culture-books/:id')
+router.route('/regions-north/:id')
   .get(cultureBFunc.show)
 
-router.route('/culture-books/:id/comments')
+router.route('/regions-north/:id/comments')
   .post(secureRoute, cultureBFunc.createComment)
 
-router.route('/culture-books/:id/comments/:commentId')
+router.route('/regions-north/:id/comments/:commentId')
   .delete(secureRoute, cultureBFunc.removeComment)
 
 
 
 // RegionSouth
-router.route('/culture-films')
+router.route('/regions-south')
   .get(cultureFFunc.index)
 
-router.route('/culture-films/:id')
+router.route('regions-south/:id')
   .get(cultureFFunc.show)
 
-router.route('/culture-films/:id/comments')
+router.route('regions-south/:id/comments')
   .post(secureRoute, cultureFFunc.createComment)
 
-router.route('/culture-films/:id/comments/:commentId')
+router.route('regions-south/:id/comments/:commentId')
   .delete(secureRoute, cultureFFunc.removeComment)
 
 
 
 // RegionEast
-router.route('/culture-music')
+router.route('/regions-east')
   .get(cultureMFunc.index)
 
-router.route('/culture-music/:id')
+router.route('/regions-east/:id')
   .get(cultureMFunc.show)
 
-router.route('/culture-music/:id/comments')
+router.route('/regions-east/:id/comments')
   .post(secureRoute, cultureMFunc.createComment)
 
-router.route('/culture-music/:id/comments/:commentId')
+router.route('/regions-east/:id/comments/:commentId')
   .delete(secureRoute, cultureMFunc.removeComment)
 
 
 
 
 // Current
-router.route('/currents')
+router.route('/current')
   .get(currentFunc.index)
 
-router.route('/currents/:id')
+router.route('/current/:id')
   .get(currentFunc.show)
 
-router.route('/currents/:id/comments')
+router.route('/current/:id/comments')
   .post(secureRoute, currentFunc.createComment)
 
-router.route('/currents/:id/comments/:commentId')
+router.route('/current/:id/comments/:commentId')
   .delete(secureRoute, currentFunc.removeComment)
 
 
