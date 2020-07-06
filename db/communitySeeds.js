@@ -1,11 +1,10 @@
 const mongoose = require('mongoose')
-const { dbURI } = require('../config/environment')
 const Community = require('../models/Community')
 const communityData = require('./data/CommunityData')
 
 
 mongoose.connect(
-  dbURI,
+  'mongodb://localhost/stokd',
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   (err) => {
     if (err) return console.log(err)

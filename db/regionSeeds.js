@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { dbURI } = require('../config/environment')
 const RegionNorth = require('../models/RegionNorth')
 const RegionSouth = require('../models/RegionSouth')
 const RegionEast = require('../models/RegionEast')
@@ -10,7 +9,7 @@ const regionEastData = require('./data/regionEastData')
 
 
 mongoose.connect(
-  dbURI,
+  'mongodb://localhost/stokd',
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   (err) => {
     if (err) return console.log(err)

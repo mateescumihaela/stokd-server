@@ -16,7 +16,7 @@ function show(req, res) {
   RegionEast
     .findById(req.params.id)
     .then(regionEast => {
-      if (!regionEast) res.status(404).json({ message: ' Region Not Found' })
+      if (!regionEast) res.status(404).json({ message: 'Region Not Found' })
       else res.status(200).json(regionEast)
     })
     .catch(err => console.log(err))
