@@ -1,3 +1,4 @@
+
 const regionNorthData = (user) => {
   return [{
     spot: 'Matosinhos',

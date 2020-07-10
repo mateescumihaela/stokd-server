@@ -4,7 +4,7 @@ const currentData = require('./data/currentData')
 
 
 mongoose.connect(
-  'mongodb://localhost/stokd',
+  'mongodb://localhost/stokd-server',
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   (err) => {
     if (err) return console.log(err)    

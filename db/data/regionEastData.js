@@ -1,4 +1,3 @@
-
 const regionEastData = (user) => {
   return [{
     spot: 'Ericeira',

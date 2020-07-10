@@ -9,7 +9,7 @@ const regionEastData = require('./data/regionEastData')
 
 
 mongoose.connect(
-  'mongodb://localhost/stokd',
+  'mongodb://localhost/stokd-server',
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   (err) => {
     if (err) return console.log(err)
