@@ -54,6 +54,6 @@
     "serve:front": "webpack-dev-server --mode-development",
     "serve": "webpack-dev-server --mode=development",
     "build": "webpack -p",
-    "start": "node ./bin/www"
+    "start": "node app.js"
   }
 }
