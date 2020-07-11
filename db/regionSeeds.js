@@ -6,6 +6,7 @@ const User = require('../models/User')
 const regionNorthData = require('./data/regionNorthData')
 const regionSouthData = require('./data/regionSouthData')
 const regionEastData = require('./data/regionEastData')
+const { dbURI, port } = require('./config/environment')
 
 
 mongoose.connect(

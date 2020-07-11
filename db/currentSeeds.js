@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Current = require('../models/Current')
 const currentData = require('./data/currentData')
+const { dbURI, port } = require('./config/environment')
 
 
 mongoose.connect(
