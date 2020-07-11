@@ -1,6 +1,4 @@
 const router = require('express').Router()
-
-const clothingFunc = require('./controllers/clothingFunc')
 const communityFunc = require('./controllers/communityFunc')
 const regionNorthFunc = require('./controllers/regionNorthFunc')
 const regionSouthFunc = require('./controllers/regionSouthFunc')
@@ -18,7 +16,6 @@ router.route('/communities')
 router.route('/communities/:id')
   .get(communityFunc.show)
   // .post(secureRoute, communityFunc.createLikes)
-
 
 
 router.route('/communities/:id/comments')
@@ -84,8 +81,7 @@ router.route('/regions-east/:id/comments/:commentId')
 
 
 
-
-// ************************ current ************************
+// ************************ news ************************
 router.route('/current')
   .get(currentFunc.index)
 
