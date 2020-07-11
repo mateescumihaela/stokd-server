@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
@@ -10,7 +12,7 @@ const router = require('./router')
 
 // ************************ connect mongo to mongoose ************************
 
-mongoose.connect(dbURI,
+mongoose.connect(process.env.MONGODB_URI,
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   () => console.log('Mongo is connected'))
 
