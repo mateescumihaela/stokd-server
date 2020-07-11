@@ -4,33 +4,28 @@ const { secret } = require('../config/environment')
 
 function register(req, res) {
   User
-    .create(req.body)
-    // send a welcome message with users username embedded
-    .then(user => res.status(200).json({ message: `Hello ${user.username}, thank you for registering` })) 
+    .create(req.body) // same as creating any other resource, see animals create controller, except runs our extra pre 'save' and 'validate' methods. See /models/User for these.
+    .then(user => res.status(200).json({ message: `Hello ${user.username}, thank you for registering` })) // if creates succesfully, send a welcome message with users username embedded
     .catch(err => {
       console.log(err)
       res.status(200).json({ message: 'Problem registering account', error: err.message })
     })
 }
 
-// login route
-// 1. user supplies email and password in body of request
+// login route -/login
+// user supplies in body of request, email and password only
 function login(req, res) {
   User
     .findOne({ email: req.body.email }) //find the user by that email
-    // 2. check if there's a record and the password provided matches what's in the database
-    .then(user => {
+    .then(user => { //check to if we found a record and the password provided matches what is in the database
       if (!user || !user.validatePassword(req.body.password)) {
-        // 3. send a response of unauthorised and end there
-        return res.status(401).json({ message: 'Unauthorized' })
+        return res.status(401).json({ message: 'Unauthorized' }) // send a response of unauthorized and end the process here
       }
       const token = jwt.sign({ sub: user._id }, secret, { expiresIn: '12h' }) // if all good, create a JSON web token (jwt), baking in the user id, a secret to encode/decode and an expiry time for the token
-      // 4. send back a message with that created token
       res.status(202).json({ message: `Welcome Back ${user.username}`, token, user })
-    }) 
+    }) //finally send back a message with that created token
     .catch(() => res.status(401).json({ message: 'Unauthorized' } ))
 }
-
 
 // find user liked articles
 function retrieveLikes(req, res) {
@@ -42,6 +37,7 @@ function retrieveLikes(req, res) {
     })
     .catch(err => console.log(err))
 }
+
 
 // PUT user liked articles
 function updateLikes(req, res) {
@@ -60,9 +56,11 @@ function updateLikes(req, res) {
 }
 
 
+
 module.exports = {
   register,
   login,
   retrieveLikes,
   updateLikes
 }
+// exporting each 'route handling' function, taking advantage of es6 object short hand, same as saying { login: login }

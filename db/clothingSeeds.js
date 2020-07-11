@@ -12,10 +12,10 @@ mongoose.connect(
     db.dropDatabase()
       .then(() => {
         return User.create([{
-          username: 'Lucy',
-          email: 'xxx@gmail.com',
-          password: '12345',
-          passwordConfirmation: '12345'
+          username: 'mihaela',
+          email: 'test@gmail.com',
+          password: 'test',
+          passwordConfirmation: 'test'
         }])
       })  
       .then(users => {

@@ -7,7 +7,6 @@ const regionSouthFunc = require('./controllers/regionSouthFunc')
 const regionEastFunc = require('./controllers/regionEastFunc')
 const currentFunc = require('./controllers/currentFunc')
 const userFunc = require('./controllers/userFunc')
-
 const secureRoute = require('./lib/secureRoute')
 
 
@@ -112,15 +111,11 @@ router.route('/login')
   .post(userFunc.login)
 
 
-
 // ************************ dashboard ************************
 
 router.route('/dashboard/:userId')
   .get(secureRoute, userFunc.retrieveLikes)
   .put(secureRoute, userFunc.updateLikes)
-
-
-
 
 
 

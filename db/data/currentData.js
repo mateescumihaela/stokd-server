@@ -1,16 +1,16 @@
 module.exports = [
   {
-    title: 'Top 10 renting tips: how to be a happy tenant',
-    image: 'https://i.imgur.com/JjpGJ1W.jpg',
-    text: 'More people are tenants than ever before, with a flood of students joined by people in their 30s and 40s – here’s how to avoid the pitfalls and rip-offs',
-    author: 'Rupert Jones - Guardian',
-    url: 'https://www.theguardian.com/money/2012/aug/31/top-10-renting-tips-happy-tenant'
+    title: 'How To Have a More Sustainable Surf Commute',
+    image: 'https://i1.wp.com/www.surfer.com/wp-content/uploads/2020/06/Jeremy2-scaled.jpg?resize=1920%2C1080&ssl=1',
+    text: 'What e-bikes lack in cool, they make up for in carbon savings',
+    author: 'Some dude',
+    url: 'https://www.surfer.com/features/ebikes-for-surfers-how-to-have-a-more-sustainable-surf-commute/'
   },
   {
-    title: 'What are the seven wonders of the world?',
-    image: 'https://i.imgur.com/Hg7EtRT.jpg',
-    text: 'The Seven Wonders of the Ancient World were a collection of remarkable constructions listed by various Greek authors, including Antipater of Sidon and Philo of Byzantium. The classic list featured seven wonders located in the Eastern Mediterranean.',
-    author: 'Oliver Smith - Telegraph',
-    url: 'https://www.telegraph.co.uk/travel/advice/What-are-the-seven-wonders-of-the-world/'
+    title: 'What You Need To Know About Surf Travel In The Age of COVID',
+    image: 'https://i1.wp.com/www.surfer.com/wp-content/uploads/2011/05/board-bags.jpg?resize=1920%2C1080&ssl=1',
+    text: 'Changes you will likely see in the airports and on flights during your next surf trip',
+    author: 'Some dude',
+    url: 'https://www.surfer.com/features/what-you-need-to-know-about-surf-travel-in-the-age-of-covid/'
   }
 ]

@@ -13,6 +13,7 @@
     "express": "^4.17.1",
     "file-loader": "^5.0.2",
     "jsonwebtoken": "^8.5.1",
+    "local-storage": "^2.0.0",
     "mapbox-gl": "^1.6.0",
     "mocha": "^6.2.2",
     "mongodb": "^3.5.2",
@@ -47,7 +48,7 @@
   },
   "scripts": {
     "test": "mocha backend/test/**/*_spec.js --require backend/test/helper --recursive --exit",
-    "seed": "node db/clothingSeeds.js; node db/commuSeeds.js; node db/cultureSeeds.js; node backend/db/currentSeeds.js",
+    "seed": "node db/commuSeeds.js; node db/cultureSeeds.js; node backend/db/currentSeeds.js",
     "serve:back": "nodemon app.js",
     "serve:front": "webpack-dev-server --mode-development",
     "serve": "webpack-dev-server --mode=development",
