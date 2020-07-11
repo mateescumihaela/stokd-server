@@ -6,9 +6,15 @@ const regionEastFunc = require('./controllers/regionEastFunc')
 const currentFunc = require('./controllers/currentFunc')
 const userFunc = require('./controllers/userFunc')
 const secureRoute = require('./lib/secureRoute')
+const getResults = require('./scraper');
 
+//GET home page
+router.get("/", async (req, res, next) => {
+const result = await getResults();
+res.render("index", result);
+ });
 
-// ************************ community ************************
+// communities
 router.route('/communities')
   .get(communityFunc.index)
 
@@ -27,7 +33,7 @@ router.route('/communities/:id/comments/:commentId')
  
 
   
-// ************************ region north ************************
+// region north
 router.route('/regions-north')
   .get(regionNorthFunc.index)
 
@@ -45,7 +51,7 @@ router.route('/regions-north/:id/comments/:commentId')
 
 
 
-// ************************ region south ************************
+// region south
 router.route('/regions-south')
   .get(regionSouthFunc.index)
 
@@ -63,7 +69,7 @@ router.route('/regions-south/:id/comments/:commentId')
 
 
 
-// ************************ region east ************************
+// region east
 router.route('/regions-east')
   .get(regionEastFunc.index)
 
@@ -81,7 +87,7 @@ router.route('/regions-east/:id/comments/:commentId')
 
 
 
-// ************************ news ************************
+// news
 router.route('/current')
   .get(currentFunc.index)
 
@@ -98,7 +104,7 @@ router.route('/current/:id/comments/:commentId')
 
 
 
-// ************************ user ************************
+// user
 router.route('/register')
   .post(userFunc.register)
 
@@ -107,7 +113,7 @@ router.route('/login')
   .post(userFunc.login)
 
 
-// ************************ dashboard ************************
+// dashboard
 
 router.route('/dashboard/:userId')
   .get(secureRoute, userFunc.retrieveLikes)
