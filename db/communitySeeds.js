@@ -4,7 +4,7 @@ const communityData = require('./data/CommunityData')
 
 
 mongoose.connect(
-  'mongodb://localhost/stokd-server',
+  dbURI,
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   (err) => {
     if (err) return console.log(err)

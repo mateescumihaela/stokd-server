@@ -48,12 +48,8 @@
     "webpack-dev-server": "^3.1.14"
   },
   "scripts": {
-    "test": "mocha backend/test/**/*_spec.js --require backend/test/helper --recursive --exit",
-    "seed": "node db/commuSeeds.js; node db/cultureSeeds.js; node backend/db/currentSeeds.js",
-    "serve:back": "nodemon app.js",
-    "serve:front": "webpack-dev-server --mode-development",
-    "serve": "webpack-dev-server --mode=development",
-    "build": "webpack -p",
+    "webpack": "webpack",
+    "build": "npm run webpack -- --mode production",
     "start": "node app.js"
   }
 }
