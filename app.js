@@ -6,7 +6,7 @@ const { dbURI, port } = require('./config/environment')
 const path = require('path')
 const errorHandler = require('./lib/errorHandler')
 const router = require('./router')
-const weatherRouter = require('./router');
+//const weatherRouter = require('./router');
 
 
 
