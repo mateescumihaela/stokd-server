@@ -19,9 +19,6 @@ const getResults = async () => {
     console.log(title);
   });
 
-  //cleaning up the data
-   let cleanTitle = title.split('\n');
-   console.log(cleanTitle)
 
 
   /* $(".ok-thumb").each((index, element) => {

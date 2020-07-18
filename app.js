@@ -6,6 +6,7 @@ const { dbURI, port } = require('./config/environment')
 const path = require('path')
 const errorHandler = require('./lib/errorHandler')
 const router = require('./router')
+const weatherRouter = require('./router');
 
 
 
@@ -18,7 +19,7 @@ mongoose.connect(dbURI,
 const app = express()
 
 
-// ************************ middlewhere ************************
+// ************************ middleware ************************
 
 app.use(bodyParser.json())
 
@@ -32,6 +33,7 @@ app.use((req, res, next) => {
 // ************************ router ************************
 
 app.use('/api', router)
+//app.use('/weather', router);
 
 
 app.use(errorHandler)

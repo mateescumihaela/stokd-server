@@ -8,6 +8,7 @@ const userFunc = require('./controllers/userFunc')
 const secureRoute = require('./lib/secureRoute')
 const getResults = require('./scraper');
 
+
 //GET home page
 router.get("/", async (req, res, next) => {
 const result = await getResults();
