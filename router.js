@@ -120,5 +120,12 @@ router.route('/dashboard/:userId')
   .put(secureRoute, userFunc.updateLikes)
 
 
+  //weather
+
+  router.get('/weather', (req, res, next) => {
+    res.render('index');
+  })
+
+
 
 module.exports = router
