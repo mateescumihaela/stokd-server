@@ -12,7 +12,7 @@ const router = require('./router')
 
 // ************************ connect mongo to mongoose ************************
 
-mongoose.connect(dbURI,
+mongoose.connect('mongodb://localhost/my-db',
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   () => console.log('Mongo is connected'))
 
