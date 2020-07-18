@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Community = require('../models/Community')
 const communityData = require('./data/CommunityData')
-const { dbURI, port } = require('./config/environment')
+const { dbURI, port } = require('../config/environment')
 
 
 mongoose.connect(
