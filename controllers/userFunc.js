@@ -27,10 +27,12 @@ function login(req, res) {
     .catch(() => res.status(401).json({ message: 'Unauthorized' } ))
 }
 
-// find user liked articles
+
+
+// GET user liked articles
 function retrieveLikes(req, res) {
   User
-    .findOne({ _id: req.params.userId })
+    .findById({ _id: req.params.userId })
     .then(user => {
       if (!user) res.status(404).json({ message: 'User Not Found' })
       return res.status(200).json(user)
@@ -43,16 +45,40 @@ function retrieveLikes(req, res) {
 function updateLikes(req, res) {
   req.body.user = req.currentUser
   User
-    .findOne({ _id: req.params.userId })
+    .findById({ _id: req.params.userId })
+    .populate('user.likes')
     .then(user => {
       if (!user) res.status(404).json({ message: 'User Not Found' })
-      user.likes.push(req.body)
-      
-      res.status(201).json(user)
+      if (user.likes.includes(`${req.body._id}`)) {
+        return res.status(200).json({ message: 'already added' })
+      } else {
+        user.likes.push(req.body)
+      }
+      res.status(201).json({ message: 'like added', user })
       return user.save()
     })
     
     .catch(err => console.log(err))
+}
+
+
+// DELETE user liked articles
+function removeLikes(req, res, next) {
+  User
+    .findById(req.params.userId)
+    .then(user => {
+      if (!user) res.status(404).json({ message: 'User Not Found' })
+      
+      const likeById = user.likes.indexOf(req.params.articleId)
+      // res.json(user.likes[likeById])
+      // why pull but not remove???
+      user.likes.pull(user.likes[likeById])
+      
+      return user.save()
+    })
+    // .then(user => User.populate(user))
+    .then(user => res.status(200).json({ message: 'like deleted', user }))
+    .catch(next)
 }
 
 
@@ -61,6 +87,6 @@ module.exports = {
   register,
   login,
   retrieveLikes,
-  updateLikes
+  updateLikes,
+  removeLikes
 }
-// exporting each 'route handling' function, taking advantage of es6 object short hand, same as saying { login: login }

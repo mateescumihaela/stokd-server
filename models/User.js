@@ -1,5 +1,6 @@
-const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
+const mongoose = require('mongoose') 
+const bcrypt = require('bcrypt') 
+const uniqueValidator = require('mongoose-unique-validator')
 
 
 const userSchema = new mongoose.Schema({ 
@@ -8,7 +9,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true  }, 
   likes: [{ type: mongoose.Schema.ObjectId, ref: 'users' }]
 }, {
-  timestamps: true, 
+  timestamps: true,
   toJSON: { 
     transform(doc, json) {
       return { 
@@ -20,47 +21,34 @@ const userSchema = new mongoose.Schema({
   }
 })
 
-// Setting a virtual field on the model, this only exists when a user is first created and is not saved to the database. 
-// The idea here is that we only need a 'passwordConfirmation' once, to check if it and the password are the same, so there is no reason for us to actually store this value for the long term. 
-// A virtual field on the model fufills that requirement, once creating a user you will see that the password confirmation feild does not exist
+userSchema.plugin(uniqueValidator)
+
+
 userSchema
   .virtual('passwordConfirmation')
   .set(function setPasswordConfirmation(passwordConfirmation) {
     this._passwordConfirmation  = passwordConfirmation
   })
 
-// When we ask our model to create a new user (this happens in /controllers/user in the register function, we make a call to User.create(....object)) mongoose runs through two steps, validate, where mongoose checks all the rquirements are met laid out in the schema above, and if it does, moves onto the save step, where it the new user is saved to the DB. 
-//We can write our own 'hooks' pre these events to perform more custom validations ourselves. 
-//Pre the validate phase we check the password and password confirmation match, if they do we allow it to move onto its own validations. 
-//Pre the save stage, we replace the users plain text password with a hashed version using the bcrypt library, then allow the save step.
 
 userSchema
   .pre('validate', function checkPassword(next) { 
-    // running before validation step
     if (this.isModified('password') && this._passwordConfirmation !== this.password) {
-      this.invalidate('passwordConfirmation', 'does not match') 
-      // throws an error back to the controllers if the password passConf do not match
+      this.invalidate('passwordConfirmation', 'does not match')
     }
     next() 
-    // otherwise allows to move on the Validate step
   })
 
 userSchema
-  // this happens before the mode is saved
   .pre('save',  function hashPassword(next) { 
-  // if the password has been created or changed
     if (this.isModified('password')) { 
-  // reassign as a hash of itself
       this.password = bcrypt.hashSync(this.password, bcrypt.genSaltSync(8)) 
     }
-  // now move on to saving
     next() 
   })
 
 
 userSchema.methods.validatePassword = function validatePassword(password) {
-  // our own methods attached to our user model to validate if a password is correct at login.
   return bcrypt.compareSync(password, this.password) 
-  // bcyrpt hashes the password our user is trying to login with the same it hashed the one stored in the DB when they registered, it then compares them for us to see if they match, and returns true or false depending on the outcome
 }
-module.exports = mongoose.model('User', userSchema) 
+module.exports = mongoose.model('User', userSchema)

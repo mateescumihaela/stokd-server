@@ -5,7 +5,7 @@ const { dbURI, port } = require('../config/environment')
 
 
 mongoose.connect(
-  dbURI,
+  'mongodb://heroku_8xjr7v94:pu27vtrpqrq6642ieemjr3bicg@ds123346.mlab.com:23346/heroku_8xjr7v94',
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   (err) => {
     if (err) return console.log(err)    

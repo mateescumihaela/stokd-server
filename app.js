@@ -38,6 +38,7 @@ app.use('/api', router)
 
 app.use(errorHandler)
 
+
 app.get('/not-found', (req, res) => {
   res.status(404).sendFile(path.resolve('dist', 'index.html'))
 })

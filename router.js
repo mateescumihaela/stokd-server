@@ -71,19 +71,19 @@ router.route('/regions-south/:id/comments/:commentId')
 
 
 // region east
-router.route('/regions-east')
+router.route('/regions-north')
   .get(regionEastFunc.index)
 
 
-router.route('/regions-east/:id')
+router.route('/regions-north/:id')
   .get(regionEastFunc.show)
 
 
-router.route('/regions-east/:id/comments')
+router.route('/regions-north/:id/comments')
   .post(secureRoute, regionEastFunc.createComment)
 
 
-router.route('/regions-east/:id/comments/:commentId')
+router.route('/regions-north/:id/comments/:commentId')
   .delete(secureRoute, regionEastFunc.removeComment)
 
 
