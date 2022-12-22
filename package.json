@@ -14,7 +14,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "file-loader": "^5.0.2",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "local-storage": "^2.0.0",
     "mapbox-gl": "^1.6.0",
     "mongodb": "^3.5.2",
